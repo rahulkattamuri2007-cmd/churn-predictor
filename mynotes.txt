@@ -1,0 +1,70 @@
+Key Takeaway for Your Notes / README:
+No (Did not churn): 5,174 (~73.46%)
+Yes (Churned): 1,869 (~26.54%)
+The dataset has a moderate class imbalance (~73% non-churn vs ~27% churn), which will be important to keep in mind during model evaluation (Phase 4).
+
+step 3.1
+Initial missing/blank rows: 11 rows (these correspond to new customers who had tenure = 0).
+Rows before drop: 7,043
+Rows after drop: 7,032 (less than 0.2% data loss).
+Missing values check: Confirmed 0 missing values across all 21 columns.
+
+step 3.2
+All columns numeric: Dataset consists of 31 numeric columns (int64 and float64).
+customerID check: 'customerID' in df.columns $\rightarrow$ False.
+Target Churn values: 0 (5,163 rows) and 1 (1,869 rows).
+Final Shape: (7032, 31).
+
+step 3.3
+X_train shape: (5625, 30)
+X_test shape:  (1407, 30)
+y_train shape: (5625,)
+y_test shape:  (1407,)
+
+Train set: 5625 rows (80.0%)
+Test set:  1407 rows (20.0%)
+
+'Churn' in X.columns: False (confirmed target leakage is prevented).
+
+
+step 4.1
+Performance Results
+Accuracy Score: 78.75% (0.7875)
+Confusion Matrix:
+$$\begin{bmatrix} 915 & 118 \ 181 & 193 \end{bmatrix}$$
+
+True Negatives (TN): 915 (Correctly identified non-churners)
+False Positives (FP): 118 (Non-churners incorrectly flagged as churn)
+False Negatives (FN): 181 (Churners missed by the model)
+True Positives (TP): 193 (Correctly caught churners)
+=== Classification Report ===
+                 precision    recall  f1-score   support
+
+Not Churned (0)       0.83      0.89      0.86      1033
+    Churned (1)       0.62      0.52      0.56       374
+
+       accuracy                           0.79      1407
+      macro avg       0.73      0.70      0.71      1407
+   weighted avg       0.78      0.79      0.78      1407
+
+
+step 4.2
+	Metric	Logistic Regression	Random Forest
+0	Overall Accuracy	78.75%	78.54%
+1	Precision (Churn = 1)	0.6206	0.6268
+2	Recall (Churn = 1)	0.5160	0.4759
+3	F1-Score (Churn = 1)	0.5635	0.5410
+4	Precision (Stay = 0)	0.8349	0.8255
+5	Recall (Stay = 0)	0.8858	0.8974
+6	F1-Score (Stay = 0)	0.8596	0.8599
+
+
+step 5.1
+Rank	Feature	Mean |SHAP Value|	Business Interpretation
+1	tenure	0.0653	Low tenure (new customers) strongly increases churn risk. Customers with high tenure are very loyal.
+2	InternetService_Fiber optic	0.0524	Customers with Fiber Optic service have a significantly higher propensity to churn.
+3	TotalCharges	0.0386	Reflects cumulative customer lifetime spend and account duration.
+4	Contract_Two year	0.0362	Having a 2-year contract heavily decreases churn probability (strongest retention factor).
+5	PaymentMethod_Electronic check	0.0295	Paying via Electronic Check correlates with higher churn compared to automatic bank/credit card methods.
+6	MonthlyCharges	0.0265	Higher monthly bills increase customer churn probability.
+7	Contract_One year	0.0238	One-year contract commitments significantly protect against churn

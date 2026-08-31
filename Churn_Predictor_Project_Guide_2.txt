@@ -1,0 +1,155 @@
+========================================================
+PHASE 7.3: DARK THEME + SMOOTH ANIMATIONS (UI POLISH)
+========================================================
+
+GOAL: Make the app look modern and techy with a dark theme and
+smooth animations, WITHOUT touching any prediction/model logic
+from Step 7.2. Every step below only affects styling.
+
+PRE-CHECK BEFORE STARTING:
+- Confirm your app currently predicts correctly (test both
+  "Likely to Stay" and "Likely to Churn" cases one more time)
+- Commit your current working version to git first:
+  git add .
+  git commit -m "Working app before UI styling"
+  (This gives you a safe rollback point if styling breaks anything)
+
+
+STEP 7.3.1 - Enable dark theme (built-in, no CSS needed)
+------------------------------------
+PROMPT TO GIVE ANTIGRAVITY:
+"Create a folder called .streamlit in the project root, and inside
+it create a config.toml file that sets Streamlit's theme to dark
+mode, with a modern accent color (like a teal or electric blue),
+dark background, and a clean sans-serif font."
+
+VERIFY:
+- Stop the running app (Ctrl+C in terminal) and restart it:
+  streamlit run app.py
+- Confirm the background is now dark and the accent color shows
+  on buttons/sliders
+- Confirm your input fields and Predict button still work exactly
+  as before (click through both test cases again)
+
+BEFORE MOVING ON:
+- If theme doesn't apply, confirm config.toml is inside a folder
+  named exactly ".streamlit" (with the dot) in project root, not
+  inside "data" or elsewhere
+
+
+STEP 7.3.2 - Inject custom CSS for cards and spacing
+------------------------------------
+PROMPT TO GIVE ANTIGRAVITY:
+"In app.py, without touching any prediction logic, add a block of
+custom CSS at the top of the script using st.markdown with
+unsafe_allow_html=True. Style the following: rounded corners and
+subtle shadow on input containers, better spacing between sections,
+a styled 'card' container for the prediction result, and a custom
+style for the Predict button (rounded, slightly larger, hover color
+change). Keep all existing widgets and variable names unchanged -
+only wrap/style them."
+
+VERIFY:
+- Refresh the app in browser
+- Confirm inputs and button now look more polished (rounded edges,
+  spacing, hover effect on button)
+- Run both test predictions again - confirm output values are
+  IDENTICAL to before (same probability %, same result) - this
+  confirms logic wasn't touched, only appearance
+
+BEFORE MOVING ON:
+- If anything looks broken (overlapping text, invisible elements),
+  ask Antigravity to fix only the CSS, explicitly saying "don't
+  change any Python logic, only fix the CSS"
+
+
+STEP 7.3.3 - Add fade-in animation for the result
+------------------------------------
+PROMPT TO GIVE ANTIGRAVITY:
+"Add a CSS fade-in animation (using @keyframes, opacity and
+transform) that applies to the prediction result card only, so
+that when a prediction is shown, it smoothly fades and slides in
+instead of appearing instantly. Do not change how the prediction
+is calculated - only how the existing result is visually revealed."
+
+VERIFY:
+- Click Predict and watch the result appear - it should smoothly
+  fade/slide in rather than popping in instantly
+- Click Predict multiple times with different inputs - animation
+  should replay each time
+- Confirm the actual predicted values are still correct and match
+  your earlier test cases
+
+BEFORE MOVING ON:
+- If the animation doesn't replay on repeated clicks, ask Antigravity
+  to fix by adding a unique key or forcing a re-render, without
+  touching prediction code
+
+
+STEP 7.3.4 - Add a loading state during prediction
+------------------------------------
+PROMPT TO GIVE ANTIGRAVITY:
+"Add a short loading spinner or progress animation (using
+st.spinner or a custom CSS spinner) that shows briefly while the
+prediction is being calculated, before the result card appears.
+Keep the actual prediction function completely unchanged - only
+wrap the existing function call with a loading indicator."
+
+VERIFY:
+- Click Predict and confirm you briefly see a spinner/loading
+  animation before the result shows
+- Confirm the final prediction result is unchanged from before
+
+BEFORE MOVING ON:
+- If the spinner shows but then the app feels laggy, that's fine
+  for a portfolio demo - real prediction is fast, spinner is
+  mostly cosmetic
+
+
+STEP 7.3.5 - (Optional) Add a Lottie animation for extra polish
+------------------------------------
+PROMPT TO GIVE ANTIGRAVITY:
+"Install the streamlit-lottie package. Then add a small Lottie
+animation next to the prediction result - a green checkmark
+animation if the prediction is 'Likely to Stay', and a red/orange
+warning animation if 'Likely to Churn'. Use a free Lottie JSON
+from lottiefiles.com for each case. Do not modify any prediction
+logic - only add this visual element next to the existing result
+text."
+
+VERIFY:
+- Confirm the correct animation (checkmark vs warning) shows
+  based on the actual prediction result, not randomly
+- Confirm app doesn't crash or hang on load due to the new package
+
+BEFORE MOVING ON:
+- If this feels like too much for now, skip it - Steps 7.3.1 to
+  7.3.4 alone already make a big visual difference
+
+
+STEP 7.3.6 - Final full regression check
+------------------------------------
+PROMPT TO GIVE ANTIGRAVITY:
+"Show me the full current app.py so I can review that no prediction
+or data-processing logic was changed during the UI styling steps."
+
+VERIFY (do this yourself, carefully):
+- Confirm the model loading code (model.pkl, model_columns.pkl) is
+  unchanged
+- Confirm the input-to-dataframe conversion logic is unchanged
+- Confirm the predict() and predict_proba() calls are unchanged
+- Run your 2 known test cases one final time (short tenure/month-
+  to-month = churn, long tenure/long contract = stay) and confirm
+  results match exactly what you got in Step 7.2
+
+BEFORE MOVING ON:
+- Once confirmed, commit this as a checkpoint:
+  git add .
+  git commit -m "Added dark theme and smooth animations to UI"
+  git push
+
+
+========================================================
+YOU'RE DONE. App now has a polished dark UI with smooth
+animations, and your prediction logic is verified untouched.
+========================================================
