@@ -4,4 +4,5 @@ shap
 streamlit
 matplotlib
 seaborn
-imbalanced-learn
+streamlit-lottie
+requests
