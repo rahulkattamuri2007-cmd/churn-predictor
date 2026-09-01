@@ -55,6 +55,11 @@ Customer churn poses a critical financial challenge for telecommunications compa
 | **Recall (Stay = 0)** | 88.58% | **89.74%** |
 | **F1-Score (Stay = 0)** | 85.96% | **85.99%** |
 
+
+### Why Random Forest?
+
+Although Logistic Regression achieved slightly higher overall accuracy and churn recall, Random Forest was selected as the final model because it provides a non-linear modeling approach and works well with complex feature interactions. It also integrates well with **SHAP explainability**, allowing the application to show which customer attributes contribute most to each prediction.
+
 ---
 
 ## 🔍 Key SHAP Model Insights
