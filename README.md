@@ -88,7 +88,7 @@ Below is a preview of the interactive Streamlit application featuring dark mode,
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/churn-predictor.git
+   git clone https://github.com/rahulkattamuri2007-cmd/churn-predictor.git
    cd churn-predictor
    ```
 
