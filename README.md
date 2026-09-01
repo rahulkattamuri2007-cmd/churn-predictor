@@ -79,6 +79,22 @@ Below is a preview of the interactive Streamlit application featuring dark mode,
 
 ---
 
+## 🧪 Example Predictions
+
+### 🟢 Likely to Stay
+- Long-term customer
+- Two-year contract
+- Multiple support services
+- Lower monthly charges
+
+### 🔴 Likely to Churn
+- Short tenure
+- Month-to-month contract
+- Fiber optic internet
+- Higher monthly charges
+
+---
+
 ## 🚀 How to Run Locally
 
 ### Prerequisites
