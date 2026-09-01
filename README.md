@@ -4,6 +4,12 @@ An interactive end-to-end Machine Learning web application that predicts custome
 
 ---
 
+## 🚀 Live Demo
+
+👉 [Try the Churn Predictor](https://churn-predictor-jqkgtxnd5fyfptanateypp.streamlit.app/)
+
+---
+
 ## 📌 Problem Statement
 
 Customer churn poses a critical financial challenge for telecommunications companies, as acquiring a new subscriber costs up to five times more than retaining an existing customer. Identifying subscribers who are at high risk of canceling their service allows business teams to intervene early with targeted retention offers, contract incentives, and personalized support before cancellation occurs.
